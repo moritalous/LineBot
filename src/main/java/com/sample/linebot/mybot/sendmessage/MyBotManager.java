@@ -16,6 +16,11 @@ public class MyBotManager {
 			return myBot;
 		}
 
+		myBot = new MusicBot();
+		if (myBot.match(result)) {
+			return myBot;
+		}
+
 		return new RepeatBot();
 	}
 

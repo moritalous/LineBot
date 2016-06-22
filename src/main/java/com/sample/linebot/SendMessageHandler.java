@@ -29,7 +29,13 @@ public class SendMessageHandler implements RequestHandler<DynamodbEvent, Respons
 		List<DynamodbStreamRecord> records = event.getRecords();
 
 		for (DynamodbStreamRecord record : records) {
+
+			System.out.println(record.toString());
+
 			Map<String, AttributeValue> image = record.getDynamodb().getNewImage();
+			if (image == null) {
+				return null;
+			}
 
 			AttributeValue value = image.get("json");
 			String s = value.getS();
