@@ -1,0 +1,30 @@
+package com.sample.linebot;
+
+import java.io.IOException;
+
+import org.junit.Test;
+
+/**
+ * A simple test harness for locally invoking your Lambda function handler.
+ */
+public class ReceiveMessageHandlerTest {
+
+	private static final String SAMPLE_INPUT_STRING = "{\"foo\": \"bar\"}";
+	private static final String EXPECTED_OUTPUT_STRING = "{\"FOO\": \"BAR\"}";
+
+	@Test
+	public void testReceiveMessageHandler() throws IOException {
+		// ReceiveMessageHandler handler = new ReceiveMessageHandler();
+		//
+		// InputStream input = new
+		// ByteArrayInputStream(SAMPLE_INPUT_STRING.getBytes());;
+		// OutputStream output = new ByteArrayOutputStream();
+		//
+		// handler.handleRequest(input, output, null);
+		//
+		// // TODO: validate output here if needed.
+		// String sampleOutputString = output.toString();
+		// System.out.println(sampleOutputString);
+		// Assert.assertEquals(EXPECTED_OUTPUT_STRING, sampleOutputString);
+	}
+}

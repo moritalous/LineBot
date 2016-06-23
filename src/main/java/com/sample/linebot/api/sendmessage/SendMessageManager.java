@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sample.linebot.api.sendmessage.AudioContent.ContentMetadata;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -35,6 +36,22 @@ public class SendMessageManager {
 		imageContent.setOriginalContentUrl(originalContentUrl);
 		imageContent.setPreviewImageUrl(previewImageUrl);
 		message.setContent(imageContent);
+		sendMessage(createPostBody(message));
+	}
+
+	public void sendAudioContent(String to, String originalContentUrl, String AUDLEN) {
+		sendAudioContent(new String[] { to }, originalContentUrl, AUDLEN);
+	}
+
+	public void sendAudioContent(String[] to, String originalContentUrl, String AUDLEN) {
+		SendMessageRequest message = new SendMessageRequest();
+		message.setTo(to);
+		AudioContent audioContent = new AudioContent();
+		audioContent.setOriginalContentUrl(originalContentUrl);
+		ContentMetadata metadata = audioContent.new ContentMetadata();
+		metadata.setAUDLEN(AUDLEN);
+		audioContent.setContentMetadata(metadata);
+		message.setContent(audioContent);
 		sendMessage(createPostBody(message));
 	}
 
