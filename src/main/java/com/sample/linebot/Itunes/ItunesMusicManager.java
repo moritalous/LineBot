@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sample.linebot.ItunesMusic.Music;
+import com.sample.linebot.Itunes.topchart.Music;
 
 import okhttp3.OkHttpClient;
 

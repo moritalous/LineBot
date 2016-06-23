@@ -15,6 +15,10 @@ public class MyBotManager {
 		if (myBot.match(result)) {
 			return myBot;
 		}
+		myBot = new MusicSearchBot();
+		if (myBot.match(result)) {
+			return myBot;
+		}
 
 		myBot = new MusicBot();
 		if (myBot.match(result)) {

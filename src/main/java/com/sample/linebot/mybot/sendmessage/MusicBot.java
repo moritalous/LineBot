@@ -3,8 +3,8 @@ package com.sample.linebot.mybot.sendmessage;
 import java.util.List;
 
 import com.sample.linebot.Itunes.ItunesMusicManager;
-import com.sample.linebot.ItunesMusic.Entry;
-import com.sample.linebot.ItunesMusic.Music;
+import com.sample.linebot.Itunes.topchart.Entry;
+import com.sample.linebot.Itunes.topchart.Music;
 import com.sample.linebot.api.receivemessage.Result;
 import com.sample.linebot.api.sendmessage.SendMessageManager;
 
