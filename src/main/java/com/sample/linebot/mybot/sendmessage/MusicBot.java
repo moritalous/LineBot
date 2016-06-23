@@ -27,34 +27,35 @@ public class MusicBot implements IMyBot {
 		ItunesMusicManager musicManager = new ItunesMusicManager();
 		Music music = musicManager.getMusic();
 
-		Entry entry = choiceEntry(music.getFeed().getEntry());
-
-		String title = entry.getImName().getLabel();
-		String artist = entry.getImArtist().getLabel();
-		String image = entry.getImImage().get(2).getLabel();
-
-		String duration = entry.getLink().get(1).getImDuration().getLabel();
-		int iDuration = 30;
-		try {
-			iDuration = Integer.parseInt(duration) / 10;
-		} catch (NumberFormatException e) {
-		}
-		String href = entry.getLink().get(1).getAttributes().getHref();
-
-		String message = String.format("%s / %s", title, artist);
-
-		manager.sendImageContent(to, image, image);
+		String message = createMessage(music);
 
 		manager.sendTextContent(to, message);
 
-		manager.sendAudioContent(to, href, Integer.toString(iDuration));
 	}
 
-	private Entry choiceEntry(List<Entry> entries) {
-		int size = entries.size();
-		int num = (int) (Math.random() * 1000) % size;
+	private String createMessage(Music music) {
+		StringBuilder sb = new StringBuilder();
 
-		return entries.get(num);
+		try {
+			List<Entry> entries = music.getFeed().getEntry();
+			if (entries.size() == 0) {
+				throw new Exception();
+			}
+
+			for (int i = 0; i < entries.size(); i++) {
+				Entry entry = entries.get(i);
+
+				String title = entry.getImName().getLabel();
+				String artist = entry.getImArtist().getLabel();
+				String message = String.format("%s)%s / %s", Integer.toString(i + 1), title, artist);
+
+				sb.append(message).append("\r\n");
+			}
+			sb.insert(0, "トップチャート10\r\n");
+		} catch (Exception e) {
+			sb = new StringBuilder().append("あれれ？");
+		}
+
+		return sb.toString();
 	}
-
 }

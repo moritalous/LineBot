@@ -26,7 +26,7 @@ public class ItunesMusicManager {
 	}
 
 	protected String getRequestUrl() {
-		return "https://itunes.apple.com/jp/rss/topsongs/limit=100/genre=27/json";
+		return "https://itunes.apple.com/jp/rss/topsongs/limit=10/genre=27/json";
 	}
 
 	protected Music createMusic(String json) throws JsonParseException, JsonMappingException, IOException {
