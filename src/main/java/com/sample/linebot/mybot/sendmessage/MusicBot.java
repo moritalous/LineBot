@@ -16,7 +16,7 @@ public class MusicBot implements IMyBot {
 		if (text.contains("ミュージック")) {
 			return true;
 		}
-		return true;
+		return false;
 	}
 
 	@Override
@@ -51,7 +51,6 @@ public class MusicBot implements IMyBot {
 	}
 
 	private Entry choiceEntry(List<Entry> entries) {
-
 		int size = entries.size();
 		int num = (int) (Math.random() * 1000) % size;
 
