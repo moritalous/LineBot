@@ -12,7 +12,7 @@ public class MusicSearchBot implements IMyBot {
 	@Override
 	public boolean match(Result result) {
 		String text = result.getContent().getText();
-		if (text.endsWith("がききたい")) {
+		if (text.endsWith("がききたい") || text.endsWith("が聞きたい") || text.endsWith("が聴きたい")) {
 			return true;
 		}
 		return false;
@@ -28,6 +28,11 @@ public class MusicSearchBot implements IMyBot {
 
 		ItunesTrackSearchManager searchManager = new ItunesTrackSearchManager();
 		SearchResult searchResults = searchManager.getSearchResult(text);
+		if (searchResults.getResultCount() == 0) {
+			manager.sendTextContent(to, "みつからなかった。。。");
+			return;
+		}
+
 		com.sample.linebot.Itunes.tracksearch.Result searchResult = choiceTrack(searchResults);
 
 		String title = searchResult.getTrackName();
