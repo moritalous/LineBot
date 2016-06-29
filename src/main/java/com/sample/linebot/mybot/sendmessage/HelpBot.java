@@ -18,16 +18,17 @@ public class HelpBot implements IMyBot {
 	public void execute(Result result) {
 		SendMessageManager manager = new SendMessageManager();
 		String to = result.getContent().getFrom();
-		manager.sendTextContent(to, createMessage());
+		manager.sendTextContent(to, MyBotManager.getHelpMessage());
 	}
 
-	private String createMessage() {
-		StringBuilder builder = new StringBuilder();
+	@Override
+	public String keyword() {
+		return "ヘルプ";
+	}
 
-		builder.append("キーワードはこちら").append("\r\n").append("×××さん").append("\r\n").append("ミュージック").append("\r\n")
-				.append("○○○がききたい").append("\r\n").append("妖怪メダル セットオン！").append("\r\n");
-
-		return builder.toString();
+	@Override
+	public String descryption() {
+		return "ヘルプを表示";
 	}
 
 }

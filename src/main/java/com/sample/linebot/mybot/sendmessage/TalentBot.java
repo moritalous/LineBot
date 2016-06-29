@@ -50,4 +50,15 @@ public class TalentBot implements IMyBot {
 		manager.sendTextContent(to, text);
 	}
 
+	@Override
+	public String keyword() {
+		return "×××さん";
+	}
+
+	@Override
+	public String descryption() {
+		// TODO Auto-generated method stub
+		return "有名人検索";
+	}
+
 }

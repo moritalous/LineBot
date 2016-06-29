@@ -58,4 +58,14 @@ public class MusicBot implements IMyBot {
 
 		return sb.toString();
 	}
+
+	@Override
+	public String keyword() {
+		return "ミュージック";
+	}
+
+	@Override
+	public String descryption() {
+		return "ミュージックランキング";
+	}
 }

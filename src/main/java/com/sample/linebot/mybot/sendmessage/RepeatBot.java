@@ -38,4 +38,14 @@ public class RepeatBot implements IMyBot {
 		GetProfileManager manager = new GetProfileManager();
 		return manager.requestProfile(mid);
 	}
+
+	@Override
+	public String keyword() {
+		return null;
+	}
+
+	@Override
+	public String descryption() {
+		return "オウム返し";
+	}
 }

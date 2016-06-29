@@ -22,4 +22,20 @@ public class MyBotManager {
 		}
 		return new RepeatBot();
 	}
+
+	public static String getHelpMessage() {
+		StringBuilder builder = new StringBuilder();
+
+		for (int i = 0; i < classArray.length; i++) {
+			try {
+				Class<? extends IMyBot> clazz = classArray[i];
+				IMyBot myBot = clazz.newInstance();
+				builder.append(String.format("「%s」→%s", myBot.keyword(), myBot.descryption())).append("\r\n");
+			} catch (InstantiationException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return builder.toString();
+	}
 }

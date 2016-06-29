@@ -59,4 +59,14 @@ public class MusicSearchBot implements IMyBot {
 		return results.get(num);
 	}
 
+	@Override
+	public String keyword() {
+		return "×××がききたい";
+	}
+
+	@Override
+	public String descryption() {
+		return "ミュージック検索";
+	}
+
 }
