@@ -6,7 +6,14 @@ public class MyBotManager {
 
 	public static IMyBot getMyBot(Result result) {
 
-		IMyBot myBot = new YokaiBot();
+		IMyBot myBot = null;
+
+		myBot = new HelpBot();
+		if (myBot.match(result)) {
+			return myBot;
+		}
+
+		myBot = new YokaiBot();
 		if (myBot.match(result)) {
 			return myBot;
 		}
