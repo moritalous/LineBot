@@ -41,4 +41,14 @@ public class YokaiBot implements IMyBot {
 		} catch (InterruptedException e) {
 		}
 	}
+
+	@Override
+	public String keyword() {
+		return "妖怪メダル セットオン！";
+	}
+
+	@Override
+	public String descryption() {
+		return "召喚";
+	}
 }

@@ -7,4 +7,8 @@ public interface IMyBot {
 	boolean match(Result result);
 
 	void execute(Result result);
+
+	String keyword();
+
+	String descryption();
 }
