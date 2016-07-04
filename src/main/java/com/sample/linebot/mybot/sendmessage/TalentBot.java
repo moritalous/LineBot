@@ -1,5 +1,7 @@
 package com.sample.linebot.mybot.sendmessage;
 
+import java.util.Collections;
+
 import com.sample.linebot.api.receivemessage.Result;
 import com.sample.linebot.api.sendmessage.SendMessageManager;
 import com.sample.linebot.talent.AbstractTalentManager;
@@ -33,11 +35,9 @@ public class TalentBot implements IMyBot {
 
 		if (talentList.size() == 0) {
 			manager.sendTextContent(to, "誰？？");
-		} else if (talentList.size() == 1) {
-			sendTalent(talentList.get(0), manager, result);
 		} else {
-			int num = (int) (Math.random() * 1000) % talentList.size();
-			sendTalent(talentList.get(num), manager, result);
+			Collections.shuffle(talentList);
+			sendTalent(talentList.get(0), manager, result);
 		}
 	}
 
@@ -57,7 +57,6 @@ public class TalentBot implements IMyBot {
 
 	@Override
 	public String descryption() {
-		// TODO Auto-generated method stub
 		return "有名人検索";
 	}
 

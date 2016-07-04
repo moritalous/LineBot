@@ -1,5 +1,6 @@
 package com.sample.linebot.mybot.sendmessage;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.sample.linebot.Itunes.ItunesTrackSearchManager;
@@ -53,10 +54,8 @@ public class MusicSearchBot implements IMyBot {
 
 	private com.sample.linebot.Itunes.tracksearch.Result choiceTrack(SearchResult searchResult) {
 		List<com.sample.linebot.Itunes.tracksearch.Result> results = searchResult.getResults();
-		int size = results.size();
-		int num = (int) (Math.random() * 1000) % size;
-
-		return results.get(num);
+		Collections.shuffle(results);
+		return results.get(0);
 	}
 
 	@Override
