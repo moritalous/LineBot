@@ -33,11 +33,12 @@ public class TalentBot implements IMyBot {
 		AbstractTalentManager talentManager = new TalentSearchManager(text);
 		TalentList talentList = talentManager.getTalentList();
 
-		if (talentList.size() == 0) {
+		Collections.shuffle(talentList);
+		Talent talent = talentList.stream().findFirst().orElse(null);
+		if (talent == null) {
 			manager.sendTextContent(to, "誰？？");
 		} else {
-			Collections.shuffle(talentList);
-			sendTalent(talentList.get(0), manager, result);
+			sendTalent(talent, manager, result);
 		}
 	}
 
