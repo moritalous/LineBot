@@ -41,4 +41,16 @@ public class Location {
 		this.longitude = longitude;
 	}
 
+	@Override
+	public String toString() {
+
+		StringBuilder builder = new StringBuilder();
+
+		builder.append(String.format("Title : %s", getTitle())).append("\r\n")
+				.append(String.format("Address : %s", getAddress())).append("\r\n")
+				.append(String.format("Latitude : %f", getLatitude())).append("\r\n")
+				.append(String.format("Longitude : %f", getLongitude()));
+
+		return builder.toString();
+	}
 }
