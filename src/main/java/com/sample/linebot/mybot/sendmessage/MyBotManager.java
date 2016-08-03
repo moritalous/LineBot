@@ -9,8 +9,8 @@ import com.sample.linebot.api.receivemessage.Result;
 public class MyBotManager {
 
 	@SuppressWarnings("unchecked")
-	private static Class<? extends IMyBot>[] classArray = new Class[] { HelpBot.class, YokaiBot.class, TalentBot.class,
-			MusicSearchBot.class, MusicBot.class, MokomichiBot.class, RepeatBot.class };
+	private static Class<? extends IMyBot>[] classArray = new Class[] { HelpBot.class, PokeBot.class, YokaiBot.class,
+			TalentBot.class, MusicSearchBot.class, MusicBot.class, MokomichiBot.class, RepeatBot.class };
 
 	public static IMyBot getMyBot(Result result) {
 		return Arrays.asList(classArray).stream().map(clazz -> {
