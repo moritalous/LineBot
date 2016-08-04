@@ -7,6 +7,8 @@ public class Pokemon {
 	private String captorId;
 	private String profilePhto;
 
+	private int hitPoint;
+
 	public int getNo() {
 		return no;
 	}
@@ -48,6 +50,22 @@ public class Pokemon {
 	public String getLargeImageUrl() {
 		return new StringBuilder().append("http://www.pokemon.jp/zukan/images/l/")
 				.append(profilePhto.replace("/zukan/images/l/", "")).toString();
+	}
+
+	public void setHitPoint(int hitPoinrt) {
+		this.hitPoint = hitPoinrt;
+	}
+
+	public int getHitPoint() {
+		return this.hitPoint;
+	}
+
+	public int hit(int damage) {
+		hitPoint -= damage;
+		if (hitPoint < 0) {
+			hitPoint = 0;
+		}
+		return hitPoint;
 	}
 
 }
