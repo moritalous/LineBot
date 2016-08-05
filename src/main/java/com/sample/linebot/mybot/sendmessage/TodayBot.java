@@ -28,6 +28,7 @@ public class TodayBot implements IMyBot {
 		Today today = todayManager.requestToday();
 		if (today.getTitle() != null) {
 			{
+				String text = String.format("今日は%sだよ", today.getTitle());
 				manager.sendTextContent(to, text);
 				if (today.getDetail() != null && !today.getDetail().equals("")) {
 					manager.sendTextContent(to, today.getDetail());
