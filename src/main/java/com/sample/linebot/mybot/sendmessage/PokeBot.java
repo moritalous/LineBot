@@ -36,6 +36,61 @@ public class PokeBot implements IMyBot {
 
 		Location location = result.getContent().getLocation();
 
+		if (location.getTitle() != null && !location.getTitle().equals("位置情報") && !location.getTitle().equals("")) {
+			if (location.getTitle().contains("堺筋本町")) {
+				PokemonGet pokemonGet = new PokemonGet();
+				Pokemon pokemon = pokemonGet.requestDetail(150);
+
+				manager.sendImageContent(to, pokemon.getLargeImageUrl(), pokemon.getLargeImageUrl());
+
+				String text = new StringBuilder().append(location.getTitle()).append("には").append(pokemon.getName())
+						.append("がいるよ。").toString();
+
+				manager.sendTextContent(to, text);
+				return;
+			} else {
+				int hash = location.getTitle().hashCode();
+				hash = Math.abs(hash);
+				System.out.println("hash : " + hash);
+
+				if ((hash % 10) > 8) {
+					StringBuilder sb = new StringBuilder().append(location.getTitle()).append("はポケストップだよ。")
+							.append("\r\n");
+
+					switch ((int) (Math.random() * 100 % 3)) {
+					case 1: {
+						sb.append("モンスターボールを手に入れた！");
+					}
+						break;
+					case 2: {
+						sb.append("キズぐすりを手に入れた！");
+					}
+						break;
+					case 3:
+					default: {
+						sb.append("ポケモンのタマゴを手に入れた！");
+					}
+						break;
+					}
+					manager.sendTextContent(to, sb.toString());
+					return;
+				}
+				{
+					PokemonGet pokemonGet = new PokemonGet();
+					Pokemon pokemon = pokemonGet.requestDetail(getPokeNo(hash));
+
+					manager.sendImageContent(to, pokemon.getLargeImageUrl(), pokemon.getLargeImageUrl());
+
+					String text = new StringBuilder().append(location.getTitle()).append("の").append(pokemon.getName())
+							.append("をゲットだぜ").toString();
+
+					manager.sendTextContent(to, text);
+					return;
+				}
+			}
+
+		}
+
 		int myPokeNo = getPokeNo(location.getLatitude() * 10000);
 		int yourPokeNo = getPokeNo(location.getLongitude() * 10000);
 
